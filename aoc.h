@@ -6,6 +6,7 @@
 namespace aoc {
 
 std::string input(int year, int day);
+std::pair<std::string_view, std::string_view> split(std::string_view str, std::string_view delim);
 
 }
 

@@ -9,7 +9,11 @@ add_library(aoc aoc.cpp)
 target_link_libraries(aoc CURL)
 include_directories(.)
 
-foreach (day RANGE 1 3)
+add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+add_compile_options(-fsanitize=address -fno-omit-frame-pointer)
+add_link_options(-fsanitize=address)
+
+foreach (day RANGE 1 4)
     if (day LESS 10)
         set(day "0${day}")
     endif ()

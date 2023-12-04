@@ -101,4 +101,13 @@ std::string input(int year, int day)
     return str;
 }
 
+std::pair<std::string_view, std::string_view> split(std::string_view str, std::string_view delim)
+{
+    auto pos = str.find(delim);
+    if (pos == std::string_view::npos) {
+        return { str, {} };
+    }
+    return { str.substr(0, pos), str.substr(pos + delim.size()) };
+}
+
 }
