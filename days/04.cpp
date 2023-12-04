@@ -20,27 +20,20 @@ std::pair<int, std::vector<int>> parse(const std::string &input)
     std::vector<int> card_winners;
 
     int total_score = 0;
-    std::string line;
-    while (std::getline(iss, line)) {
-        auto [card, cards] = aoc::split(line, ":");
-        auto [winning, haves] = aoc::split(cards, "|");
+    std::string left_part;
+    std::string right_part;
+    while (std::getline(iss, left_part, '|') && std::getline(iss, right_part)) {
+        std::istringstream iss_winning { std::string(left_part) };
+        std::istringstream iss_have { std::string(right_part) };
 
-        std::istringstream iss_card { std::string(card) };
-        std::istringstream iss_winning { std::string(winning) };
-        std::istringstream iss_have { std::string(haves) };
-
-        std::vector<int> winning_cards;
-        std::vector<int> have_cards;
-
-        std::string stmp;
         int card_number;
-        iss_card >> stmp >> card_number;
+        while (iss_winning.get() != ' ')
+            ;
+        iss_winning >> card_number;
+        iss_winning.ignore(1);
 
-        int tmp;
-        while (iss_winning >> tmp)
-            winning_cards.push_back(tmp);
-        while (iss_have >> tmp)
-            have_cards.push_back(tmp);
+        auto winning_cards = aoc::parse_numbers(iss_winning);
+        auto have_cards = aoc::parse_numbers(iss_have);
 
         int score = 0;
         int count = 0;

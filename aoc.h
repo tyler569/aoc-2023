@@ -2,11 +2,13 @@
 #define AOC_2023_AOC_H
 
 #include <string>
+#include <vector>
 
 namespace aoc {
 
 std::string input(int year, int day);
-std::pair<std::string_view, std::string_view> split(std::string_view str, std::string_view delim);
+std::vector<long> parse_numbers(std::istream &iss);
+std::vector<long> parse_numbers(const std::string &string);
 
 }
 
