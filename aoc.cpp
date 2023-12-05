@@ -106,8 +106,11 @@ std::vector<long> parse_numbers(std::istream &iss)
     std::vector<long> numbers;
 
     long tmp;
-    while (iss >> tmp)
+    while (iss >> tmp) {
         numbers.push_back(tmp);
+    }
+
+    iss.clear(std::ios_base::goodbit | (iss.eof() ? std::ios_base::eofbit : 0));
 
     return numbers;
 }
