@@ -13,7 +13,7 @@ add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 add_compile_options(-fsanitize=address -fno-omit-frame-pointer)
 add_link_options(-fsanitize=address)
 
-foreach (day RANGE 1 7)
+foreach (day RANGE 1 8)
     if (day LESS 10)
         set(day "0${day}")
     endif ()
